@@ -6,10 +6,16 @@
         "laravel/framework": ">=5.2.27",
         "chobie/jira-api-restclient": "2.*@dev"
     },
+    "autoload": {
+        "psr-4": {
+            "Josevh\\JiraCal\\": "src/"
+        }
+    },
     "license": "MIT",
     "authors": [
         {
             "name": "Jose Herrera",
+            "homepage": "http://josevh.com",
             "email": "josevictorherrera@gmail.com"
         }
     ],
