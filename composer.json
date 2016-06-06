@@ -1,0 +1,17 @@
+{
+    "name": "josevh/jiracal",
+    "description": "Browse Jira issues in a calendar interface",
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/framework": ">=5.2.27",
+        "chobie/jira-api-restclient": "2.*@dev"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jose Herrera",
+            "email": "josevictorherrera@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
