@@ -3,6 +3,10 @@
 ### Goal
   Display Jira tickets in a calendar view for easier browser. (Uses issue create date)
 
+### Requirements
+ 1. Laravel >= 5.2.27
+ 2. Composer
+
 ### Installation
  1. Install via Composer
 	 2. ```composer require josevh/jiracal```
