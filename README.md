@@ -6,7 +6,6 @@
 ### Installation
  1. Install via Composer
 	 2. ```composer require josevh/jiracal```
-	 3. ```composer dump-autoload```
  3. Set environment variables
 	 4. ```JIRACAL_PATH=```
 		 5. Path desired for calendar
@@ -27,3 +26,6 @@
 	 8. ```php artisan vendor:publish --provider="Josevh\JiraCal\JiraCalServiceProvider"```
  9. Done
 	 10. View at http://app/PATH where PATH is configured in your ```.env``` from step 3
+
+
+![screenshot](screenshot.png)
