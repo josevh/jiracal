@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
 class JiraCalController extends Controller
 {
 
