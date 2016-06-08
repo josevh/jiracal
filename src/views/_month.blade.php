@@ -64,8 +64,7 @@
                                                         <strong>{{ $issues[$day][$i]->getKey() }}</strong> {{ $issues[$day][$i]->getSummary()}}
                                                     </a>
                                                 @elseif($i == 3 && count($issues[$day]) > 3)
-                                                    <hr>
-                                                    <span class="pull-right"><a href="{{ action('\Josevh\JiraCal\JiraCalController@day', [$key, $dateComponents['year'], str_pad($dateComponents['mon'], 2, '0', STR_PAD_LEFT), str_pad($day,  2, '0', STR_PAD_LEFT)]) }}"><strong>More</strong>...</a></span>
+                                                    <span class="pull-right"><a href="{{ action('\Josevh\JiraCal\JiraCalController@day', [$key, $dateComponents['year'], str_pad($dateComponents['mon'], 2, '0', STR_PAD_LEFT), str_pad($day,  2, '0', STR_PAD_LEFT)]) }}"><span class="label label-primary">More</span></a></span>
                                                     <?php break; ?>
                                                 @else($i == 1)
                                                     &nbsp;
