@@ -170,6 +170,7 @@ class JiraCalController extends Controller
         }
         // jira issues
         $issues             = JiraCalHelper::jiraIssues($key, $year, $month, 1, 'month');
+        $createIssueLink    = JiraCalHelper::jiraCreateIssueLink($key);
         // map render prep
         $today              = new Carbon();
         $cDate              = Carbon::createFromDate($year, $month, 01);
@@ -184,7 +185,8 @@ class JiraCalController extends Controller
             'daysOfWeek',
             'dateComponents',
             'maxDays',
-            'key'
+            'key',
+            'createIssueLink'
         ));
     }
 

@@ -116,4 +116,13 @@ class JiraCalHelper {
         return $payload;
     }
 
+    private static function jiraProjectID($key){
+        $api = JiraCalHelper::jiraApi();
+        return $api->getProject($key)['id'];
+    }
+
+    public static function jiraCreateIssueLink($key){        
+        return config('jiracal.jira_url') . 'secure/CreateIssue!default.jspa?pid=' . JiraCalHelper::jiraProjectID($key);;
+    }
+
 }
