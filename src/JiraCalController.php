@@ -208,7 +208,8 @@ class JiraCalController extends Controller
         $nDate = $cDate->copy()->addDay();
         $pDate = $cDate->copy()->subDay();
         $issues = JiraCalHelper::jiraIssues($key, $year, $month, $day, 'day');
-        return view('jiracal::_day', compact('year', 'month', 'day', 'issues', 'cDate', 'nDate', 'pDate', 'key'));
+        $createIssueLink    = JiraCalHelper::jiraCreateIssueLink($key);
+        return view('jiracal::_day', compact('year', 'month', 'day', 'issues', 'cDate', 'nDate', 'pDate', 'key', 'createIssueLink'));
     }
 
 }
