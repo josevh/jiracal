@@ -24,6 +24,7 @@
 
         .week h3 {
             margin-top: 0;
+            margin-bottom: 0;
         }
 
         .week .day {
