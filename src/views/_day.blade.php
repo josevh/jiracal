@@ -29,7 +29,7 @@
                             @if(isset($issues[(int)$day]))
                                 @foreach($issues[(int)$day] as $date => $issue)
                                     <li class="list-group-item">
-                                        <a href="{{ config('jiracal.jira_url') . 'browse/' . $issue->getKey() }}" title="{{ $issue->getSummary() }}" target="_blank">{{ $issue->getKey() }} - {{ $issue->getSummary() }}</a>
+                                        <a href="{{ config('jiracal.jira_url') . 'browse/' . $issue->getKey() }}" title="{{ $issue->getSummary() }}" target="_blank">{{ $issue->getKey() }}: {{ $issue->getSummary() }}</a>
                                     </li>
                                 @endforeach
                             @else

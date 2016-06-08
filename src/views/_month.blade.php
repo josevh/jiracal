@@ -62,7 +62,7 @@
                                             <p class="small issues">
                                                 @if(isset($issues[$day][$i]) && $i < 3)
                                                     <a href="{{ config('jiracal.jira_url') . 'browse/' . $issues[$day][$i]->getKey() }}" title="{{ $issues[$day][$i]->getSummary() }}" target="_blank">
-                                                        <strong>{{ $issues[$day][$i]->getKey() }}</strong> {{ $issues[$day][$i]->getSummary()}}
+                                                        <strong>{{ $issues[$day][$i]->getKey() }}</strong>: {{ $issues[$day][$i]->getSummary()}}
                                                     </a>
                                                 @elseif($i == 3 && count($issues[$day]) > 3)
                                                     <span class="pull-right"><a class="btn btn-primary btn-xs" href="{{ action('\Josevh\JiraCal\JiraCalController@day', [$key, $dateComponents['year'], str_pad($dateComponents['mon'], 2, '0', STR_PAD_LEFT), str_pad($day,  2, '0', STR_PAD_LEFT)]) }}">More</a></span>
