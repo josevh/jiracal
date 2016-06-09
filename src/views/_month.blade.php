@@ -9,10 +9,9 @@
                 </h3>
             </div>
             <div class="col-xs-8">
-                <h1>{{ $dateComponents['month'] }} {{ $dateComponents['year'] }}</h1>
+                <h1>{{ $dateComponents['month'] }} {{ $dateComponents['year'] }} <small><a class="btn btn-primary btn-xs" target="_blank" href="{{ $createIssueLink }}" role="button"><strong>Create</strong></a></small></h1>
                 <small>
                     <a href="{{ action('\Josevh\JiraCal\JiraCalController@year', [$key, $cDate->format('Y')]) }}">Back to year view</a>
-                    <a class="btn btn-primary btn-xs" target="_blank" href="{{ $createIssueLink }}" role="button">Create</a>
                 </small>
             </div>
             <div class="col-xs-2 small">
