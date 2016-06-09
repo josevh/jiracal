@@ -11,10 +11,8 @@ class JiraCalHelper {
     * @return Obj Jira api client
     */
     public static function jiraApi($username = null, $password = null) {
-        if (null === $username) {
+        if (null === $username && null === $password) {
             $username = session('jira-username');
-        }
-        if (null === $password) {
             $password = \Crypt::decrypt(session('jira-password'));
         }
         return new \chobie\Jira\Api(
@@ -82,9 +80,7 @@ class JiraCalHelper {
      * @return Array            Array with days as key with issues on specific days
      */
     public static function jiraIssues($key = null, $year = null, $month = null, $day = null, $range = null) {
-        if (null === $key) { return false; }
-        if (null === $year) { return false; }
-        if (null === $month) { return false; }
+        if (null === $key || null === $year || null === $month) { return false; }
         if (null === $day) { $day = 01; }
         if (null === $range) { $range = 'month'; }
         $api = JiraCalHelper::jiraApi();
@@ -121,7 +117,7 @@ class JiraCalHelper {
         return $api->getProject($key)['id'];
     }
 
-    public static function jiraCreateIssueLink($key){        
+    public static function jiraCreateIssueLink($key){
         return config('jiracal.jira_url') . 'secure/CreateIssue!default.jspa?pid=' . JiraCalHelper::jiraProjectID($key);;
     }
 
