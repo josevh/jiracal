@@ -166,7 +166,7 @@ class JiraCalController extends Controller
     public function month($key, $year, $month) {
         $key = strtoupper($key);
         if ($month > 12 || $month == 0) {
-            return redirect()->action('AppController@year', [$year]);
+            return redirect()->action('\Josevh\JiraCal\JiraCalController@year', [$year]);
         }
         // jira issues
         $issues             = JiraCalHelper::jiraIssues($key, $year, $month, 1, 'month');
