@@ -11,10 +11,9 @@
                         </h3>
                     </div>
                     <div class="col-xs-8">
-                        <h1>{{ $cDate->format('F') }} {{ str_pad($day, 2, '0', STR_PAD_LEFT) }}, {{ $year }}</h1>
+                        <h1>{{ $cDate->format('F') }} {{ str_pad($day, 2, '0', STR_PAD_LEFT) }}, {{ $year }} <small><a class="btn btn-primary btn-xs" target="_blank" href="{{ $createIssueLink }}" role="button"><strong>Create</strong></a></small></h1>
                         <small>
                             <a href="{{ action('\Josevh\JiraCal\JiraCalController@month', [$key, $year, str_pad($month, 2, '0', STR_PAD_LEFT)]) }}">Back to month view</a>
-                            <a class="btn btn-primary btn-xs" target="_blank" href="{{ $createIssueLink }}" role="button">Create</a>
                         </small>
                     </div>
                     <div class="col-xs-2">
