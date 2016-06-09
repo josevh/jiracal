@@ -11,32 +11,33 @@ class JiraCalController extends Controller
 
     public function index()
     {
-        if (session()->has('jira-auth') && session('jira-auth')) {
-            $api = JiraCalHelper::jiraApi();
-            try {
-                $projects = $api->getProjects();
-            } catch (\chobie\Jira\Api\UnauthorizedException $ue) {
-                return redirect()->back()->withInput()->withErrors([
-                    'message' => 'Jira authentication failed, please try again.'
-                ]);
-            } catch (\chobie\Jira\Api\Exception $ex1) {
-                return redirect()->back()->withInput()->withErrors([
-                    'message' => 'Error: ' . $ex1
-                ]);
-            } catch (Exception $ex2) {
-                return redirect()->back()->withInput()->withErrors([
-                    'message' => 'Error: ' . $ex2
-                ]);
-            }
-            $projectList = [];
-            foreach ($projects->getResult() as $key => $project) {
-                if (isset($project['key']) && isset($project['name'])) {
-                    $projectList[$project['key']] = $project['name'];
-                }
-            }
-            return view('jiracal::index', compact('projectList'));
+        if (!session('jira-auth')) {
+            return redirect()->action('\Josevh\JiraCal\JiraCalController@login')->withErrors(['message' => 'Login required']);
         }
-        return redirect()->action('\Josevh\JiraCal\JiraCalController@login');
+
+        $api = JiraCalHelper::jiraApi();
+        try {
+            $projects = $api->getProjects();
+        } catch (\chobie\Jira\Api\UnauthorizedException $ue) {
+            return redirect()->back()->withInput()->withErrors([
+                'message' => 'Jira authentication failed, please try again.'
+            ]);
+        } catch (\chobie\Jira\Api\Exception $ex1) {
+            return redirect()->back()->withInput()->withErrors([
+                'message' => 'Error: ' . $ex1
+            ]);
+        } catch (Exception $ex2) {
+            return redirect()->back()->withInput()->withErrors([
+                'message' => 'Error: ' . $ex2
+            ]);
+        }
+        $projectList = [];
+        foreach ($projects->getResult() as $key => $project) {
+            if (isset($project['key']) && isset($project['name'])) {
+                $projectList[$project['key']] = $project['name'];
+            }
+        }
+        return view('jiracal::index', compact('projectList'));
     }
 
     /**
@@ -135,12 +136,25 @@ class JiraCalController extends Controller
     }
 
     /**
+     * Redirect to listing of months for current year
+     * @param  String  $key     The project key
+     * @return \Illuminate\Http\Response
+     */
+    public function pkey($key){
+        return redirect()->action('\Josevh\JiraCal\JiraCalController@year', [$key, (new \DateTime())->format('Y')]);
+    }
+
+    /**
      * Display listing of months
      * @param  String  $key     The project key
      * @param  Integer $year    The year to display
      * @return \Illuminate\Http\Response
      */
     public function year($key, $year) {
+        if (!session('jira-auth')) {
+            return redirect()->action('\Josevh\JiraCal\JiraCalController@login')->withErrors(['message' => 'Login required']);
+        }
+
         $months = [
             '01' => 'January',
             '02' => 'February',
@@ -166,7 +180,7 @@ class JiraCalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function month($key, $year, $month) {
-        if (empty(session('jira-username')) && empty(session('jira-password'))) {
+        if (!session('jira-auth')) {
             return redirect()->action('\Josevh\JiraCal\JiraCalController@login')->withErrors(['message' => 'Login required']);
         }
 
@@ -205,6 +219,10 @@ class JiraCalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function day($key, $year, $month, $day) {
+        if (!session('jira-auth')) {
+            return redirect()->action('\Josevh\JiraCal\JiraCalController@login')->withErrors(['message' => 'Login required']);
+        }
+
         $key = strtoupper($key);
         $maxDays = date('t',mktime(0,0,0,$month,1,$year));
         if ($day > $maxDays || $day == 0) {
