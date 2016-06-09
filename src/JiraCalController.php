@@ -46,6 +46,7 @@ class JiraCalController extends Controller
      */
     public function login()
     {
+        session()->flash('_loginref', session()->get('_previous')['url']);
         return view('jiracal::login');
     }
 
@@ -124,7 +125,8 @@ class JiraCalController extends Controller
                 'jira-auth'     => true
             ]);
 
-            return redirect()->action('\Josevh\JiraCal\JiraCalController@index');
+            // return redirect()->action('\Josevh\JiraCal\JiraCalController@index');
+            return redirect()->to(session()->get('_loginref'));
         } else {
             return redirect()->back()->withInput()->withErrors([
                 'message' => 'Unable to connect to Jira, please try again.'
@@ -164,6 +166,10 @@ class JiraCalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function month($key, $year, $month) {
+        if (empty(session('jira-username')) && empty(session('jira-password'))) {
+            return redirect()->action('\Josevh\JiraCal\JiraCalController@login')->withErrors(['message' => 'Login required']);
+        }
+
         $key = strtoupper($key);
         if ($month > 12 || $month == 0) {
             return redirect()->action('\Josevh\JiraCal\JiraCalController@year', [$year]);
