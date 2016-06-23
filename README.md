@@ -15,8 +15,6 @@
 		 5. Path desired for calendar [default: **jiracal**]
 		 6. http://app/**PATH**
 	 4. ```JIRACAL_META_TITLE=```
-	 5. ```JIRACAL_META_AUTHOR=```
-	 6. ```JIRACAL_META_DESCRIPTION=```
 	 7. ```JIRACAL_URL=```
 		 8. JIRA url
 	 8. ```JIRACAL_GUEST_USERNAME=```
