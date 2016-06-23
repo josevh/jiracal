@@ -17,7 +17,7 @@ class JiraCalServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/views', 'jiracal');
 
         $this->publishes([
-            __DIR__.'/views' => base_path('resources/views/josevh/jiracal'),
+            __DIR__.'/views' => resource_path('views/josevh/jiracal'),
         ], 'views');
 
         $this->publishes([
