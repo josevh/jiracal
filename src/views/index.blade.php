@@ -7,7 +7,7 @@
                 <div class="col-sm-8 col-sm-offset-2">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h1>Projects</h1>
+                            <h1>Projects <small class="pull-right">@include('jiracal::common._auth')</small></h1>
                         </div>
                         <div class="panel-body">
                             <ul class="list-group">

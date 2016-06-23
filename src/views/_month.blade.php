@@ -9,15 +9,19 @@
                 </h3>
             </div>
             <div class="col-xs-8">
-                <h1>{{ $dateComponents['month'] }} {{ $dateComponents['year'] }} <small><a class="btn btn-primary btn-xs" target="_blank" href="{{ $createIssueLink }}" role="button"><strong>Create</strong></a></small></h1>
-                <small>
-                    <a href="{{ action('\Josevh\JiraCal\JiraCalController@year', [$key, $cDate->format('Y')]) }}">Back to year view</a>
-                </small>
+                <h1>{{ $dateComponents['month'] }} {{ $dateComponents['year'] }}</h1>
             </div>
             <div class="col-xs-2 small">
                 <h3>
                     <a href="{{ action('\Josevh\JiraCal\JiraCalController@month', [$key, $cDate->copy()->addMonth()->format('Y'), $cDate->copy()->addMonth()->format('m')]) }}">{{ $cDate->copy()->addMonth()->format('F') }}</a>
                 </h3>
+            </div>
+            <div class="col-xs-12">
+                <h5 class="text-right">
+                    <a class="btn btn-primary btn-sm" target="_blank" href="{{ $createIssueLink }}" role="button"><strong>Create</strong></a>
+                    <a class="btn btn-default btn-sm" href="{{ action('\Josevh\JiraCal\JiraCalController@year', [$key, $cDate->format('Y')]) }}">Back to year view</a>
+                    @include('jiracal::common._auth')
+                </h5>
             </div>
         </div>
         <div class="row">
