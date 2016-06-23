@@ -38,32 +38,7 @@
                             </ul>
                         </div>
                     </div>
-
                 </div>
-
-                {{-- <div class="row text-center">
-                    <div class="col-xs-2">
-                        <h3>
-                            <a href="{{ action('\Josevh\JiraCal\JiraCalController@day', [$key, $pDate->year, str_pad($pDate->month, 2, '0', STR_PAD_LEFT), str_pad($pDate->day, 2, '0', STR_PAD_LEFT)]) }}">{{ str_pad($pDate->day, 2, '0', STR_PAD_LEFT) }}</a>
-                        </h3>
-                    </div>
-                    <div class="col-xs-8">
-                        <h1>{{ $cDate->format('F') }} {{ str_pad($day, 2, '0', STR_PAD_LEFT) }}, {{ $year }} <small><a class="btn btn-primary btn-xs" target="_blank" href="{{ $createIssueLink }}" role="button"><strong>Create</strong></a></small></h1>
-                        <small>
-
-                        </small>
-                    </div>
-                    <div class="col-xs-2">
-                        <h3>
-                            <a href="{{ action('\Josevh\JiraCal\JiraCalController@day', [$key, $nDate->year, str_pad($nDate->month, 2, '0', STR_PAD_LEFT), str_pad($nDate->day, 2, '0', STR_PAD_LEFT)]) }}">{{ str_pad($nDate->day, 2, '0', STR_PAD_LEFT) }}</a>
-                        </h3>
-                    </div>
-                </div> --}}
-
-
-
-
-
             </div>
         </div>
     </div>
