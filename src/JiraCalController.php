@@ -47,7 +47,8 @@ class JiraCalController extends Controller
      */
     public function login()
     {
-        if (session()->get('_previous')['url'] == url()->current()) {
+        if (session()->get('_previous')['url'] == url()->current()
+			|| !str_contains(session()->get('_previous')['url'], config('jiracal.path'))) {
             $nextURL = url(config('jiracal.path'));
         } else {
             $nextURL = session()->get('_previous')['url'];
