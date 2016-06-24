@@ -64,8 +64,10 @@ class JiraCalController extends Controller
      */
     public function logout(Request $request)
     {
-        if (session()->has('jira-auth')) {
-            session()->flush();
+        if ($request->session()->has('jira-auth')) {
+	    $request->session()->forget('jira-auth');
+	    $request->session()->forget('jira-username');
+	    $request->session()->forget('jira-password');
             return redirect()->action('\Josevh\JiraCal\JiraCalController@index');
         } else {
             return redirect()->back()->withErrors([
