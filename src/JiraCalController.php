@@ -26,7 +26,7 @@ class JiraCalController extends Controller
             return redirect()->back()->withInput()->withErrors([
                 'message' => 'Error: ' . $ex1
             ]);
-        } catch (Exception $ex2) {
+        } catch (\Exception $ex2) {
             return redirect()->back()->withInput()->withErrors([
                 'message' => 'Error: ' . $ex2
             ]);
