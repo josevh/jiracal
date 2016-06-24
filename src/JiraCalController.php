@@ -15,8 +15,8 @@ class JiraCalController extends Controller
             return redirect()->action('\Josevh\JiraCal\JiraCalController@login')->withErrors(['message' => 'Login required']);
         }
 
-        $api = JiraCalHelper::jiraApi();
         try {
+            $api = JiraCalHelper::jiraApi();
             $projects = $api->getProjects();
         } catch (\chobie\Jira\Api\UnauthorizedException $ue) {
             return redirect()->back()->withInput()->withErrors([
@@ -110,9 +110,9 @@ class JiraCalController extends Controller
             $password = $request->input('jira-password');
         }
 
-        $api = JiraCalHelper::jiraApi($username, $password);
-        $projects = []; //TODO: better initialization?
         try {
+	    $api = JiraCalHelper::jiraApi($username, $password);
+            $projects = []; //TODO: better initialization?
             $projects = $api->getProjects();
         } catch (\chobie\Jira\Api\UnauthorizedException $ue) {
             return redirect()->back()->withInput()->withErrors([
